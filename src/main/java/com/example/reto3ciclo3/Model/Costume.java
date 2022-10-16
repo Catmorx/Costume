@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name= "costume")
+@Table(name = "costume")
 public class Costume {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class Costume {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "specialtyId")
+    @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties("costumes")
     private Category category;
 

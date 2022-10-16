@@ -15,23 +15,23 @@ import java.util.Date;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name= "reservation")
+@Table(name = "reservation")
 public class Reservation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
-    private String status ="created";
+    private String status = "created";
 
     @ManyToOne
-    @JoinColumn( name="costumeId")
-    @JsonIgnoreProperties("Reservations")
+    @JoinColumn(name = "costumeId")
+    @JsonIgnoreProperties("reservations")
     private Costume costume;
 
     @ManyToOne
-    @JoinColumn( name="clientId")
-    @JsonIgnoreProperties({"reservations","messages"})
+    @JoinColumn(name = "clientId")
+    @JsonIgnoreProperties({"reservations", "messages"})
     private Client client;
 
     @OneToOne(mappedBy = "reservations")

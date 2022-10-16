@@ -2,7 +2,6 @@ package com.example.reto3ciclo3.Controller;
 
 import com.example.reto3ciclo3.Model.Category;
 import com.example.reto3ciclo3.services.Categoryservices;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

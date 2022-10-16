@@ -17,15 +17,16 @@ public class ClientController {
 
 
     @GetMapping("/all")
-    public List<Client> getAll(){
-            return clientService.getAll();
-        }
+    public List<Client> getAll() {
+        return clientService.getAll();
+    }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Client save(@RequestBody Client c){
-            return clientService.save(c);
+    public Client save(@RequestBody Client c) {
+        return clientService.save(c);
     }
+
     @DeleteMapping("/{idClient}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable Integer idClient) {
@@ -37,7 +38,6 @@ public class ClientController {
     public Client update(@RequestBody Client clientModel) {
         return clientService.update(clientModel);
     }
-
 
 
 }

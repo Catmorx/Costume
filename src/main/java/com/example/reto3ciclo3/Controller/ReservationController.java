@@ -20,13 +20,13 @@ public class ReservationController {
     private ReservationServices reservationServices;
 
     @GetMapping("/all")
-    public List<Reservation> getAll(){
+    public List<Reservation> getAll() {
         return reservationServices.getAll();
     }
 
-    @PostMapping ("/save")
+    @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Reservation save(@RequestBody  Reservation p){
+    public Reservation save(@RequestBody Reservation p) {
         return reservationServices.save(p);
     }
 
@@ -42,18 +42,19 @@ public class ReservationController {
     public Reservation updateReservation(@RequestBody Reservation reservationModel) {
         return reservationServices.update(reservationModel);
     }
+
     @GetMapping("/report-dates/{startDate}/{finishDate}")
-    public List<Reservation> getReservationPeriod(@PathVariable String startDate, @PathVariable String finishDate){
-        return  reservationServices.getReservationPeriod(startDate, finishDate);
+    public List<Reservation> getReservationPeriod(@PathVariable String startDate, @PathVariable String finishDate) {
+        return reservationServices.getReservationPeriod(startDate, finishDate);
     }
 
     @GetMapping("/report-clients")
-    public List<ReportClient> getTopClient(){
+    public List<ReportClient> getTopClient() {
         return reservationServices.getTopClient();
     }
 
     @GetMapping("/report-status")
-    public ReportStatus getReportStatus(){
+    public ReportStatus getReportStatus() {
         return reservationServices.getReportStatus();
     }
 }

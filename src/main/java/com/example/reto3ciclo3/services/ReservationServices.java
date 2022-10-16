@@ -43,7 +43,7 @@ public class ReservationServices {
 
     public Reservation update(Reservation reservationModel) {
         if (reservationModel.getIdReservation() != null) {
-            Optional<Reservation> reservation = reservationRepository.getReservation( reservationModel.getIdReservation());
+            Optional<Reservation> reservation = reservationRepository.getReservation(reservationModel.getIdReservation());
             if (!reservation.isEmpty()) {
                 if (reservationModel.getStartDate() != null) {
                     reservation.get().setStartDate(reservationModel.getStartDate());
@@ -72,37 +72,40 @@ public class ReservationServices {
             return reservationModel;
         }
 
-}
+    }
 
-    public boolean delete(int id){
-        boolean flag=false;
-        Optional<Reservation>p=reservationRepository.getReservation(id);
-        if(p.isPresent()){
+    public boolean delete(int id) {
+        boolean flag = false;
+        Optional<Reservation> p = reservationRepository.getReservation(id);
+        if (p.isPresent()) {
             reservationRepository.delete(p.get());
-            flag=true;
+            flag = true;
         }
         return flag;
 
     }
-    public List<ReportClient> getTopClient(){
+
+    public List<ReportClient> getTopClient() {
         return reservationRepository.getTopClient();
     }
-    public ReportStatus getReportStatus(){
+
+    public ReportStatus getReportStatus() {
         return reservationRepository.getReportStatus();
     }
-    public List<Reservation> getReservationPeriod(String date1, String date2){
+
+    public List<Reservation> getReservationPeriod(String date1, String date2) {
         SimpleDateFormat parseDate = new SimpleDateFormat("yyyy-MM-dd");
-        Date startDate =  new Date();
+        Date startDate = new Date();
         Date finishDate = new Date();
-        try{
+        try {
             startDate = parseDate.parse(date1);
-            finishDate= parseDate.parse(date2);
-        }catch (ParseException e){
+            finishDate = parseDate.parse(date2);
+        } catch (ParseException e) {
             e.printStackTrace();
         }
         if (startDate.before(finishDate)) {
-            return reservationRepository.getReservationPeriod(startDate,finishDate);
-        }else{
+            return reservationRepository.getReservationPeriod(startDate, finishDate);
+        } else {
             return new ArrayList<>();
         }
     }

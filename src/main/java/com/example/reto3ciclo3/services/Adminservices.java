@@ -14,20 +14,20 @@ public class Adminservices {
     @Autowired
     private AdminRepository adminRepository;
 
-    public List<Admin> getAll(){
-        return (List<Admin>)adminRepository.getAll();
+    public List<Admin> getAll() {
+        return (List<Admin>) adminRepository.getAll();
     }
 
-    public Optional<Admin> getAdmin(int id){
+    public Optional<Admin> getAdmin(int id) {
         return adminRepository.getAdmin(id);
     }
 
-    public Admin save(Admin admin){
-        if (admin.getId()==null){
-            return  adminRepository.save(admin);
+    public Admin save(Admin admin) {
+        if (admin.getId() == null) {
+            return adminRepository.save(admin);
         } else {
             Optional<Admin> adminEncontrado = adminRepository.getAdmin(admin.getId());
-            if (!adminEncontrado.isPresent()){
+            if (!adminEncontrado.isPresent()) {
                 return adminRepository.save(admin);
 
             } else {
@@ -35,7 +35,8 @@ public class Adminservices {
             }
         }
     }
-    public  Admin update(Admin adminModel){
+
+    public Admin update(Admin adminModel) {
         if (adminModel.getId() != null) {
             Optional<Admin> admin = adminRepository.getAdmin(adminModel.getId());
             if (!admin.isEmpty()) {
@@ -58,12 +59,12 @@ public class Adminservices {
         }
     }
 
-    public boolean deleteAdmin(int adminId){
-        boolean resultado= getAdmin(adminId).map(adminPorEliminar ->{
+    public boolean deleteAdmin(int adminId) {
+        boolean resultado = getAdmin(adminId).map(adminPorEliminar -> {
             adminRepository.delete(adminPorEliminar);
             return true;
         }).orElse(false);
         return resultado;
-        }
     }
+}
 

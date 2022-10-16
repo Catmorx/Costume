@@ -17,20 +17,23 @@ public class DisfracesController {
     private Disfracesservices disfracesServices;
 
     @GetMapping("/all")
-    public List<Costume> getAll(){
-       return disfracesServices.getAll();
+    public List<Costume> getAll() {
+        return disfracesServices.getAll();
     }
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Costume save(@RequestBody Costume c){
+    public Costume save(@RequestBody Costume c) {
         return disfracesServices.save(c);
     }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean deleteBoat(@PathVariable Integer id) {
         disfracesServices.delete(id);
         return true;
     }
+
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Costume updateBoat(@RequestBody Costume costumeModel) {

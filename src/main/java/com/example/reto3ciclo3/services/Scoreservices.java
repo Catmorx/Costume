@@ -1,7 +1,6 @@
 package com.example.reto3ciclo3.services;
 
 import com.example.reto3ciclo3.Model.Score;
-
 import com.example.reto3ciclo3.Repository.ScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +36,7 @@ public class Scoreservices {
 
     public Score update(Score scoreModel) {
         if (scoreModel.getId() != null) {
-            Optional<Score> score = scoreRepository.getScore( scoreModel.getId());
+            Optional<Score> score = scoreRepository.getScore(scoreModel.getId());
             if (!score.isEmpty()) {
                 if (scoreModel.getScore() != null) {
                     score.get().setScore(scoreModel.getScore());

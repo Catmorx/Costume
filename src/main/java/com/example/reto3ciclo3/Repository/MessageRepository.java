@@ -2,7 +2,6 @@ package com.example.reto3ciclo3.Repository;
 
 
 import com.example.reto3ciclo3.Model.Message;
-
 import com.example.reto3ciclo3.Repository.CrudRepository.MessageCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,18 +13,20 @@ import java.util.Optional;
 public class MessageRepository {
     @Autowired
     private MessageCrudRepository messageCrudRepository;
-    public List<Message> getAll(){
-        return (List<Message>)messageCrudRepository.findAll();
+
+    public List<Message> getAll() {
+        return (List<Message>) messageCrudRepository.findAll();
     }
 
-    public Optional<Message> getMessage(int id){
+    public Optional<Message> getMessage(int id) {
         return messageCrudRepository.findById(id);
     }
 
-    public Message save(Message message){
+    public Message save(Message message) {
         return messageCrudRepository.save(message);
     }
 
-    public void delete (Message message){messageCrudRepository.delete(message);
+    public void delete(Message message) {
+        messageCrudRepository.delete(message);
     }
 }

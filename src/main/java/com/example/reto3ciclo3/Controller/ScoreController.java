@@ -2,7 +2,6 @@ package com.example.reto3ciclo3.Controller;
 
 
 import com.example.reto3ciclo3.Model.Score;
-
 import com.example.reto3ciclo3.services.Scoreservices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,13 +19,13 @@ public class ScoreController {
     private Scoreservices scoreservices;
 
     @GetMapping("/all")
-    public List<Score> getAll(){
+    public List<Score> getAll() {
         return scoreservices.getAll();
     }
 
-    @PostMapping ("/save")
+    @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Score save(@RequestBody  Score p){
+    public Score save(@RequestBody Score p) {
         return scoreservices.save(p);
     }
 

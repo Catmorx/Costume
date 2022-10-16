@@ -13,17 +13,20 @@ import java.util.Optional;
 public class CategoryRepository {
     @Autowired
     private CategoryCrudRepository categoryCrudRepository;
-    public List<Category> getAll(){
-        return (List<Category>)categoryCrudRepository.findAll();
+
+    public List<Category> getAll() {
+        return (List<Category>) categoryCrudRepository.findAll();
     }
 
-    public Optional<Category> getCategory(Object object){
+    public Optional<Category> getCategory(Object object) {
         return categoryCrudRepository.findById((Integer) object);
     }
-    public Category save(Category c){
+
+    public Category save(Category c) {
         return categoryCrudRepository.save(c);
     }
-    public void delete(Category c){
+
+    public void delete(Category c) {
         categoryCrudRepository.delete(c);
     }
 

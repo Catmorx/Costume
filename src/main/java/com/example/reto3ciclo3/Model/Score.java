@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name= "score")
+@Table(name = "score")
 public class Score implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

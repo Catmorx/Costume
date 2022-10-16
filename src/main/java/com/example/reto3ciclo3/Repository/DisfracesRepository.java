@@ -15,19 +15,20 @@ public class DisfracesRepository {
 
     @Autowired
     private DisfracesCrudRepository disfracesCrudRepository;
-    public List<Costume> getAll (){
-        return (List<Costume>)disfracesCrudRepository.findAll();
+
+    public List<Costume> getAll() {
+        return (List<Costume>) disfracesCrudRepository.findAll();
     }
 
-    public Optional<Costume> getDisfraces(int id){
+    public Optional<Costume> getDisfraces(int id) {
         return disfracesCrudRepository.findById(id);
     }
 
-    public Costume save(Costume c){
+    public Costume save(Costume c) {
         return disfracesCrudRepository.save(c);
     }
 
-    public void delete (Costume c){
+    public void delete(Costume c) {
         disfracesCrudRepository.delete(c);
     }
 }

@@ -1,7 +1,6 @@
 package com.example.reto3ciclo3.services;
 
 import com.example.reto3ciclo3.Model.Client;
-
 import com.example.reto3ciclo3.Repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,26 +14,29 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public List<Client> getAll(){
+    public List<Client> getAll() {
         return clientRepository.getAll();
     }
-    public Optional<Client> getProduct(int id){
+
+    public Optional<Client> getProduct(int id) {
         return clientRepository.getClient(id);
     }
-    public Client save(Client p){
-        if(p.getIdClient()==null){
+
+    public Client save(Client p) {
+        if (p.getIdClient() == null) {
             return clientRepository.save(p);
-        }else{
+        } else {
             Optional<Client> e = clientRepository.getClient(p.getIdClient());
-            if(e.isPresent()){
+            if (e.isPresent()) {
 
                 return p;
-            }else{
+            } else {
                 return clientRepository.save(p);
             }
         }
     }
-    public Client update(Client clientModel){
+
+    public Client update(Client clientModel) {
         if (clientModel.getIdClient() != null) {
             Optional<Client> client = clientRepository.getClient(clientModel.getIdClient());
             if (!client.isEmpty()) {
@@ -65,12 +67,13 @@ public class ClientService {
             return clientModel;
         }
     }
-    public boolean delete(int id){
-        boolean flag=false;
-        Optional<Client>p= clientRepository.getClient(id);
-        if(p.isPresent()){
+
+    public boolean delete(int id) {
+        boolean flag = false;
+        Optional<Client> p = clientRepository.getClient(id);
+        if (p.isPresent()) {
             clientRepository.delete(p.get());
-            flag=true;
+            flag = true;
         }
         return flag;
 
